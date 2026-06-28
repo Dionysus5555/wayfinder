@@ -1,39 +1,61 @@
 # 🧭 Wayfinder
 
-> Navigation and routing for Home Assistant.
+> A modern navigation framework for Home Assistant.
 
-Wayfinder is a native Home Assistant integration that brings modern mapping and routing directly into Home Assistant.
+Wayfinder is a native Home Assistant integration that provides a single, consistent interface for navigation, routing and location services.
 
-Find places, calculate routes and build travel-aware automations using a simple, consistent interface.
+Today it supports Google Maps for intelligent place search and route planning. Tomorrow it can support public transport, multiple map providers, nearby search, EV routing and more—all without changing your automations.
 
 ---
 
 ## Features
 
-- 📍 Intelligent place search
-- 🚗 Route planning
-- 🗣️ Home Assistant Conversation support
-- 🤖 Automation-friendly services
-- 🔌 Extensible provider architecture
+* 📍 Natural language place search
+* 🚗 Driving route calculation
+* 🗣️ Home Assistant Conversation support
+* 🤖 Automation-friendly services
+* 🔌 Provider-based architecture
+* 🧩 Designed for future expansion
+
+---
+
+## Why Wayfinder?
+
+Home Assistant has excellent mapping and device tracking, but there isn't a unified integration dedicated to navigation.
+
+Wayfinder aims to solve that by providing a single API for:
+
+* Finding places
+* Calculating routes
+* Planning journeys
+* Public transport
+* Nearby search
+* Future navigation providers
+
+Your automations remain the same, regardless of which provider powers them.
 
 ---
 
 ## Installation
 
-1. Copy `custom_components/wayfinder` into your Home Assistant configuration.
-2. Restart Home Assistant.
-3. Add your Google Maps API key:
+Copy the integration into:
+
+```text
+config/custom_components/wayfinder/
+```
+
+Add your API key:
 
 ```yaml
 wayfinder:
   google_maps_api_key: !secret google_maps_api_key
 ```
 
-4. Restart Home Assistant again.
+Restart Home Assistant.
 
 ---
 
-## Services
+## Example
 
 ### Find a place
 
@@ -52,62 +74,66 @@ data:
   travel_mode: DRIVE
 ```
 
-Returns:
+Voice example:
 
-- Journey time
-- Distance
-- Google Maps link
-- Structured response data
+> "How do I get to Longleat?"
 
----
+↓
 
-## Voice Example
-
-Ask:
-
-> **"How do I get to Longleat?"**
-
-Wayfinder responds:
-
-> *"The journey to Longleat is about 22 minutes and 13.1 miles."*
+> "The journey to Longleat is about 22 minutes and 13.1 miles."
 
 ---
 
 ## Architecture
 
-```text
+```
 Home Assistant
         │
         ▼
    Wayfinder
         │
         ▼
-Provider Manager
+ Provider Manager
         │
- ┌──────┴──────┐
- ▼             ▼
-Google     Future Providers
+ ┌──────┴─────────────┐
+ ▼                    ▼
+Google         Future Providers
 ```
 
-The provider architecture makes it easy to support additional mapping and transport services without changing your automations.
+The provider architecture allows new mapping and transport services to be added without changing your Home Assistant automations.
 
 ---
 
 ## Roadmap
 
-- 🚶 Walking routes
-- 🚲 Cycling routes
-- 🚆 Public transport
-- 📍 Nearby search
-- ⭐ Favourite places
-- 🔌 Additional providers
-- 🧩 HACS support
+### v0.2
+
+* Walking routes
+* Cycling routes
+
+### v0.3
+
+* Nearby search
+* Favourite places
+* Reverse geocoding
+
+### v0.4
+
+* Public transport
+* Live train routing
+* Station search
+
+### v1.0
+
+* Multiple providers
+* HACS release
+* Complete navigation framework
 
 ---
 
 ## Contributing
 
-Contributions, ideas and bug reports are always welcome.
+Ideas, bug reports and pull requests are always welcome.
 
 ---
 
